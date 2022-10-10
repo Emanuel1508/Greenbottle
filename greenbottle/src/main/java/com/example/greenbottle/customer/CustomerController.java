@@ -24,17 +24,21 @@ public class CustomerController {
 
 
     @GetMapping
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ADMINTRAINEE')")
     public List<Customer> getCustomers() {return customerService.getCustomers();}
 
     @PostMapping
+    @PreAuthorize("hasAuthority('customer:register')")
     public void registerNewCustomer(@RequestBody Customer customer) throws MyException {customerService.registerNewCustomer(customer);}
 
     @DeleteMapping(path = "{customerId}")
+    @PreAuthorize("hasAuthority('customer:delete')")
     public void deleteCustomer(@PathVariable("customerId") String customerId) throws MyException {
         customerService.deleteCustomer(customerId);
     }
 
     @PutMapping(path = "{customerId}")
+    @PreAuthorize("hasAuthority('customer:update')")
     public void updateCustomer(@PathVariable("customerId") String customerId, @RequestBody CustomerDto customerDto) throws MyException {
 
         customerService.updateCustomer(customerId,customerDto);
