@@ -40,7 +40,6 @@ public class CustomerController {
     @PutMapping(path = "{customerId}")
     @PreAuthorize("hasAuthority('customer:update')")
     public void updateCustomer(@PathVariable("customerId") String customerId, @RequestBody CustomerDto customerDto) throws MyException {
-
         customerService.updateCustomer(customerId,customerDto);
     }
 

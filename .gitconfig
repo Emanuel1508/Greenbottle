@@ -1,0 +1,8 @@
+[user]
+	name = Emanuel1508
+	email = pop_emanuel1505@yahoo.com
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
